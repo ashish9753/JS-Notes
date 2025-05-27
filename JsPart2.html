@@ -1,0 +1,1000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals - Complete Revision Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .topic-title {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .description {
+            color: #555;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            background: #f8f9ff;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .code-block {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            border: 1px solid #333;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .keyword {
+            color: #569cd6;
+        }
+
+        .code-block .string {
+            color: #ce9178;
+        }
+
+        .code-block .number {
+            color: #b5cea8;
+        }
+
+        .example-section {
+            background: #e8f4fd;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #2196f3;
+        }
+
+        .example-title {
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .note-box {
+            background: #fff3cd;
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .note-box .note-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 5px;
+        }
+
+        .interview-section {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            margin-top: 40px;
+        }
+
+        .interview-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .question {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .answer {
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .toc {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .toc h2 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .toc-item {
+            padding: 10px 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        .toc-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .topic-title {
+                font-size: 1.5rem;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 JavaScript Fundamentals</h1>
+            <p>Complete Revision Guide with Examples & Interview Questions</p>
+            <p style="color: black; margin-top: 20px;">Created by Ashish Sharma</p>
+
+        </div>
+
+        <div class="toc">
+            <h2>📚 Table of Contents</h2>
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#console-log">🖥️ console.log()</a></li>
+                <li class="toc-item"><a href="#linking-js">🔗 Linking JS File</a></li>
+                <li class="toc-item"><a href="#template-literals">📝 Template Literals</a></li>
+                <li class="toc-item"><a href="#operators">⚡ Operators in JS</a></li>
+                <li class="toc-item"><a href="#comparison-operators">🔍 Comparison Operators</a></li>
+                <li class="toc-item"><a href="#non-number-comparisons">🔢 Non-number Comparisons</a></li>
+                <li class="toc-item"><a href="#conditional-statements">🤔 Conditional Statements</a></li>
+                <li class="toc-item"><a href="#logical-operators">✨ Logical Operators</a></li>
+                <li class="toc-item"><a href="#truthy-falsy">🎯 Truthy & Falsy</a></li>
+                <li class="toc-item"><a href="#switch-statement">🔀 Switch Statement</a></li>
+                <li class="toc-item"><a href="#alerts-prompts">💬 Alerts & Prompts</a></li>
+            </ul>
+        </div>
+
+        <div class="topic-card" id="console-log">
+            <h2 class="topic-title">🖥️ console.log()</h2>
+            <div class="description">
+                The console.log() method is used to print/display messages to the browser's console. It's essential for debugging and testing JavaScript code.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Examples:</div>
+                <div class="code-block">
+<span class="comment">// Basic console.log</span>
+<span class="keyword">console</span>.log(<span class="string">"Hello World!"</span>);
+
+<span class="comment">// Multiple values</span>
+<span class="keyword">console</span>.log(<span class="string">"Name:"</span>, <span class="string">"John"</span>, <span class="string">"Age:"</span>, <span class="number">25</span>);
+
+<span class="comment">// Variables</span>
+<span class="keyword">let</span> name = <span class="string">"Alice"</span>;
+<span class="keyword">console</span>.log(<span class="string">"User name is:"</span>, name);
+
+<span class="comment">// Objects and Arrays</span>
+<span class="keyword">console</span>.log({name: <span class="string">"Bob"</span>, age: <span class="number">30</span>});
+<span class="keyword">console</span>.log([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>]);
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Important Note:</div>
+                console.log() only displays output in the browser's developer console (F12), not on the webpage itself.
+            </div>
+        </div>
+
+        <div class="topic-card" id="linking-js">
+            <h2 class="topic-title">🔗 Linking JS File</h2>
+            <div class="description">
+                There are multiple ways to include JavaScript in your HTML document: inline, internal, and external linking.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Methods to Link JavaScript:</div>
+                <div class="code-block">
+<span class="comment"><!-- 1. External JS File (Recommended) --></span>
+&lt;<span class="keyword">script</span> <span class="string">src="script.js"</span>&gt;&lt;/<span class="keyword">script</span>&gt;
+
+<span class="comment"><!-- 2. Internal JavaScript --></span>
+&lt;<span class="keyword">script</span>&gt;
+    <span class="keyword">console</span>.log(<span class="string">"Internal JS"</span>);
+&lt;/<span class="keyword">script</span>&gt;
+
+<span class="comment"><!-- 3. Inline JavaScript --></span>
+&lt;<span class="keyword">button</span> <span class="string">onclick="alert('Hello!')"</span>&gt;Click Me&lt;/<span class="keyword">button</span>&gt;
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Best Practice:</div>
+                Always place script tags before the closing &lt;/body&gt; tag for better performance, or use external files for better organization.
+            </div>
+        </div>
+
+        <div class="topic-card" id="template-literals">
+            <h2 class="topic-title">📝 Template Literals</h2>
+            <div class="description">
+                Template literals use backticks (`) instead of quotes and allow embedded expressions using ${expression} syntax. They support multi-line strings and string interpolation.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Examples:</div>
+                <div class="code-block">
+<span class="comment">// Basic template literal</span>
+<span class="keyword">let</span> name = <span class="string">"John"</span>;
+<span class="keyword">let</span> greeting = <span class="string">`Hello, ${name}!`</span>;
+<span class="keyword">console</span>.log(greeting); <span class="comment">// Hello, John!</span>
+
+<span class="comment">// Multi-line strings</span>
+<span class="keyword">let</span> multiLine = <span class="string">`This is line 1
+This is line 2
+This is line 3`</span>;
+
+<span class="comment">// Expressions in template literals</span>
+<span class="keyword">let</span> a = <span class="number">5</span>, b = <span class="number">10</span>;
+<span class="keyword">console</span>.log(<span class="string">`Sum: ${a + b}`</span>); <span class="comment">// Sum: 15</span>
+
+<span class="comment">// Function calls</span>
+<span class="keyword">console</span>.log(<span class="string">`Current time: ${new Date().getHours()}:${new Date().getMinutes()}`</span>);
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Key Advantage:</div>
+                Template literals make string concatenation much cleaner and more readable compared to traditional string concatenation with + operator.
+            </div>
+        </div>
+
+        <div class="topic-card" id="operators">
+            <h2 class="topic-title">⚡ Operators in JS</h2>
+            <div class="description">
+                JavaScript operators are symbols used to perform operations on operands (variables and values). There are several types of operators.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Types of Operators:</div>
+                <div class="code-block">
+<span class="comment">// Arithmetic Operators</span>
+<span class="keyword">let</span> x = <span class="number">10</span>, y = <span class="number">3</span>;
+<span class="keyword">console</span>.log(x + y); <span class="comment">// Addition: 13</span>
+<span class="keyword">console</span>.log(x - y); <span class="comment">// Subtraction: 7</span>
+<span class="keyword">console</span>.log(x * y); <span class="comment">// Multiplication: 30</span>
+<span class="keyword">console</span>.log(x / y); <span class="comment">// Division: 3.333...</span>
+<span class="keyword">console</span>.log(x % y); <span class="comment">// Modulus: 1</span>
+<span class="keyword">console</span>.log(x ** y); <span class="comment">// Exponentiation: 1000</span>
+
+<span class="comment">// Assignment Operators</span>
+<span class="keyword">let</span> num = <span class="number">5</span>;
+num += <span class="number">3</span>; <span class="comment">// num = num + 3 = 8</span>
+num -= <span class="number">2</span>; <span class="comment">// num = num - 2 = 6</span>
+num *= <span class="number">2</span>; <span class="comment">// num = num * 2 = 12</span>
+
+<span class="comment">// Increment/Decrement</span>
+<span class="keyword">let</span> count = <span class="number">5</span>;
+count++; <span class="comment">// count = 6 (post-increment)</span>
+++count; <span class="comment">// count = 7 (pre-increment)</span>
+count--; <span class="comment">// count = 6 (post-decrement)</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card" id="comparison-operators">
+            <h2 class="topic-title">🔍 Comparison Operators</h2>
+            <div class="description">
+                Comparison operators compare two values and return a boolean result (true or false). They are essential for conditional statements and loops.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 All Comparison Operators:</div>
+                <div class="code-block">
+<span class="keyword">let</span> a = <span class="number">5</span>, b = <span class="number">10</span>, c = <span class="string">"5"</span>;
+
+<span class="comment">// Equal to (loose equality)</span>
+<span class="keyword">console</span>.log(a == <span class="number">5</span>);    <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a == c);    <span class="comment">// true (type coercion)</span>
+
+<span class="comment">// Strict equal to (strict equality)</span>
+<span class="keyword">console</span>.log(a === <span class="number">5</span>);   <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a === c);   <span class="comment">// false (different types)</span>
+
+<span class="comment">// Not equal to</span>
+<span class="keyword">console</span>.log(a != b);    <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a !== c);   <span class="comment">// true (strict inequality)</span>
+
+<span class="comment">// Greater than / Less than</span>
+<span class="keyword">console</span>.log(b > a);     <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a < b);     <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a >= <span class="number">5</span>);    <span class="comment">// true</span>
+<span class="keyword">console</span>.log(a <= <span class="number">4</span>);    <span class="comment">// false</span>
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Important Difference:</div>
+                Always use === (strict equality) instead of == to avoid unexpected type coercion issues.
+            </div>
+        </div>
+
+        <div class="topic-card" id="non-number-comparisons">
+            <h2 class="topic-title">🔢 Comparison for Non-numbers</h2>
+            <div class="description">
+                When comparing non-numeric values, JavaScript follows specific rules for strings, booleans, and other data types.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 String Comparisons:</div>
+                <div class="code-block">
+<span class="comment">// String comparison (lexicographic order)</span>
+<span class="keyword">console</span>.log(<span class="string">"apple"</span> < <span class="string">"banana"</span>);  <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="string">"Apple"</span> < <span class="string">"apple"</span>);   <span class="comment">// true (uppercase comes first)</span>
+<span class="keyword">console</span>.log(<span class="string">"10"</span> < <span class="string">"2"</span>);         <span class="comment">// true (string comparison, not numeric)</span>
+
+<span class="comment">// Boolean comparisons</span>
+<span class="keyword">console</span>.log(<span class="keyword">true</span> == <span class="number">1</span>);         <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">false</span> == <span class="number">0</span>);        <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">true</span> === <span class="number">1</span>);        <span class="comment">// false</span>
+
+<span class="comment">// Mixed type comparisons</span>
+<span class="keyword">console</span>.log(<span class="string">"5"</span> > <span class="number">3</span>);          <span class="comment">// true (string "5" converted to number)</span>
+<span class="keyword">console</span>.log(<span class="keyword">null</span> == <span class="keyword">undefined</span>); <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">null</span> === <span class="keyword">undefined</span>);<span class="comment">// false</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card" id="conditional-statements">
+            <h2 class="topic-title">🤔 Conditional Statements</h2>
+            <div class="description">
+                Conditional statements allow you to execute different blocks of code based on different conditions. They are the foundation of decision-making in programming.
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <h2 class="topic-title">✅ if Statement</h2>
+            <div class="description">
+                The if statement executes a block of code if a specified condition is true.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Examples:</div>
+                <div class="code-block">
+<span class="comment">// Basic if statement</span>
+<span class="keyword">let</span> age = <span class="number">18</span>;
+<span class="keyword">if</span> (age >= <span class="number">18</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"You are an adult!"</span>);
+}
+
+<span class="comment">// if with multiple conditions</span>
+<span class="keyword">let</span> score = <span class="number">85</span>;
+<span class="keyword">if</span> (score >= <span class="number">80</span> && score <= <span class="number">100</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Excellent grade!"</span>);
+}
+
+<span class="comment">// if without braces (single statement)</span>
+<span class="keyword">if</span> (age < <span class="number">13</span>)
+    <span class="keyword">console</span>.log(<span class="string">"You are a child"</span>);
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <h2 class="topic-title">🔄 else if Statement</h2>
+            <div class="description">
+                The else if statement allows you to test multiple conditions in sequence. It's used when you have more than two possible outcomes.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Examples:</div>
+                <div class="code-block">
+<span class="comment">// Grade classification</span>
+<span class="keyword">let</span> marks = <span class="number">75</span>;
+
+<span class="keyword">if</span> (marks >= <span class="number">90</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Grade A"</span>);
+} <span class="keyword">else if</span> (marks >= <span class="number">80</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Grade B"</span>);
+} <span class="keyword">else if</span> (marks >= <span class="number">70</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Grade C"</span>);
+} <span class="keyword">else if</span> (marks >= <span class="number">60</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Grade D"</span>);
+}
+
+<span class="comment">// Time-based greeting</span>
+<span class="keyword">let</span> hour = <span class="keyword">new</span> Date().getHours();
+
+<span class="keyword">if</span> (hour < <span class="number">12</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Good Morning!"</span>);
+} <span class="keyword">else if</span> (hour < <span class="number">17</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Good Afternoon!"</span>);
+} <span class="keyword">else if</span> (hour < <span class="number">21</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Good Evening!"</span>);
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <h2 class="topic-title">❌ else Statement</h2>
+            <div class="description">
+                The else statement executes a block of code when all preceding if and else if conditions are false. It's the final fallback option.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Complete if-else chain:</div>
+                <div class="code-block">
+<span class="keyword">let</span> weather = <span class="string">"rainy"</span>;
+
+<span class="keyword">if</span> (weather === <span class="string">"sunny"</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Let's go to the beach!"</span>);
+} <span class="keyword">else if</span> (weather === <span class="string">"cloudy"</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Perfect for a walk!"</span>);
+} <span class="keyword">else if</span> (weather === <span class="string">"rainy"</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Stay inside and read a book!"</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">console</span>.log(<span class="string">"I don't know this weather type!"</span>);
+}
+
+<span class="comment">// Simple if-else</span>
+<span class="keyword">let</span> number = <span class="number">7</span>;
+<span class="keyword">if</span> (number % <span class="number">2</span> === <span class="number">0</span>) {
+    <span class="keyword">console</span>.log(<span class="string">"Even number"</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">console</span>.log(<span class="string">"Odd number"</span>);
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card">
+            <h2 class="topic-title">🔗 Nested if-else</h2>
+            <div class="description">
+                Nested if-else statements are if statements inside other if statements. They allow for more complex decision-making with multiple levels of conditions.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Examples:</div>
+                <div class="code-block">
+<span class="comment">// Age and license check</span>
+<span class="keyword">let</span> age = <span class="number">20</span>;
+<span class="keyword">let</span> hasLicense = <span class="keyword">true</span>;
+
+<span class="keyword">if</span> (age >= <span class="number">18</span>) {
+    <span class="keyword">if</span> (hasLicense) {
+        <span class="keyword">console</span>.log(<span class="string">"You can drive!"</span>);
+    } <span class="keyword">else</span> {
+        <span class="keyword">console</span>.log(<span class="string">"You need to get a license first."</span>);
+    }
+} <span class="keyword">else</span> {
+    <span class="keyword">console</span>.log(<span class="string">"You're too young to drive."</span>);
+}
+
+<span class="comment">// Grade with attendance check</span>
+<span class="keyword">let</span> score = <span class="number">85</span>;
+<span class="keyword">let</span> attendance = <span class="number">90</span>;
+
+<span class="keyword">if</span> (score >= <span class="number">80</span>) {
+    <span class="keyword">if</span> (attendance >= <span class="number">85</span>) {
+        <span class="keyword">console</span>.log(<span class="string">"Excellent performance!"</span>);
+    } <span class="keyword">else</span> {
+        <span class="keyword">console</span>.log(<span class="string">"Good score but improve attendance."</span>);
+    }
+} <span class="keyword">else</span> {
+    <span class="keyword">if</span> (attendance >= <span class="number">85</span>) {
+        <span class="keyword">console</span>.log(<span class="string">"Good attendance but improve scores."</span>);
+    } <span class="keyword">else</span> {
+        <span class="keyword">console</span>.log(<span class="string">"Need improvement in both areas."</span>);
+    }
+}
+                </div>
+            </div>
+        </div>
+
+        <div class="topic-card" id="logical-operators">
+            <h2 class="topic-title">✨ Logical Operators</h2>
+            <div class="description">
+                Logical operators are used to combine or modify boolean values. They're essential for creating complex conditions in if statements and loops.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 The Three Logical Operators:</div>
+                <div class="code-block">
+<span class="comment">// AND (&&) - Both conditions must be true</span>
+<span class="keyword">let</span> age = <span class="number">25</span>;
+<span class="keyword">let</span> hasJob = <span class="keyword">true</span>;
+
+<span class="keyword">if</span> (age >= <span class="number">18</span> && hasJob) {
+    <span class="keyword">console</span>.log(<span class="string">"Eligible for loan"</span>);
+}
+
+<span class="comment">// OR (||) - At least one condition must be true</span>
+<span class="keyword">let</span> isWeekend = <span class="keyword">true</span>;
+<span class="keyword">let</span> isHoliday = <span class="keyword">false</span>;
+
+<span class="keyword">if</span> (isWeekend || isHoliday) {
+    <span class="keyword">console</span>.log(<span class="string">"No work today!"</span>);
+}
+
+<span class="comment">// NOT (!) - Reverses the boolean value</span>
+<span class="keyword">let</span> isLoggedIn = <span class="keyword">false</span>;
+
+<span class="keyword">if</span> (!isLoggedIn) {
+    <span class="keyword">console</span>.log(<span class="string">"Please log in first"</span>);
+}
+
+<span class="comment">// Complex combinations</span>
+<span class="keyword">let</span> score = <span class="number">75</span>;
+<span class="keyword">let</span> attendance = <span class="number">90</span>;
+<span class="keyword">let</span> hasBonus = <span class="keyword">false</span>;
+
+<span class="keyword">if</span> ((score >= <span class="number">70</span> && attendance >= <span class="number">85</span>) || hasBonus) {
+    <span class="keyword">console</span>.log(<span class="string">"Promotion eligible!"</span>);
+}
+
+<span class="comment">// Short-circuit evaluation</span>
+<span class="keyword">let</span> user = {name: <span class="string">"John"</span>};
+user && user.name && <span class="keyword">console</span>.log(<span class="string">"Hello, "</span> + user.name);
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Operator Precedence:</div>
+                Remember: ! (NOT) has higher precedence than && (AND), which has higher precedence than || (OR). Use parentheses for clarity.
+            </div>
+        </div>
+
+        <div class="topic-card" id="truthy-falsy">
+            <h2 class="topic-title">🎯 Truthy & Falsy</h2>
+            <div class="description">
+                In JavaScript, every value has an inherent boolean value. Understanding truthy and falsy values is crucial for conditional statements and logical operations.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Falsy Values (only 6 in JavaScript):</div>
+                <div class="code-block">
+<span class="comment">// The 6 falsy values in JavaScript</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">false</span>));      <span class="comment">// false</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="number">0</span>));          <span class="comment">// false</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(-<span class="number">0</span>));         <span class="comment">// false</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="string">""</span>));         <span class="comment">// false (empty string)</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">null</span>));       <span class="comment">// false</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">undefined</span>));  <span class="comment">// false</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">NaN</span>));        <span class="comment">// false</span>
+
+<span class="comment">// Practical examples</span>
+<span class="keyword">let</span> name = <span class="string">""</span>;
+<span class="keyword">if</span> (!name) {
+    <span class="keyword">console</span>.log(<span class="string">"Name is required!"</span>);
+}
+
+<span class="keyword">let</span> age = <span class="number">0</span>;
+<span class="keyword">if</span> (!age) {
+    <span class="keyword">console</span>.log(<span class="string">"Age not provided"</span>);
+}
+                </div>
+            </div>
+
+            <div class="example-section">
+                <div class="example-title">💡 Truthy Values (everything else):</div>
+                <div class="code-block">
+<span class="comment">// All other values are truthy</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">true</span>));       <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="number">1</span>));          <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(-<span class="number">1</span>));         <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="string">"hello"</span>));     <span class="comment">// true</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="string">" "</span>));        <span class="comment">// true (space is not empty)</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>([]));         <span class="comment">// true (empty array)</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>({}));         <span class="comment">// true (empty object)</span>
+<span class="keyword">console</span>.log(<span class="keyword">Boolean</span>(<span class="keyword">function</span>(){})); <span class="comment">// true</span>
+
+<span class="comment">// Common use cases</span>
+<span class="keyword">let</span> user = {name: <span class="string">"Alice"</span>};
+<span class="keyword">if</span> (user) {
+    <span class="keyword">console</span>.log(<span class="string">"User exists"</span>);
+}
+
+<span class="keyword">let</span> items = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];
+<span class="keyword">if</span> (items.length) {
+    <span class="keyword">console</span>.log(<span class="string">"Items available"</span>);
+}
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Important Note:</div>
+                Be careful with "0", "false", "null" as strings - they are truthy! Only the actual values are falsy.
+            </div>
+        </div>
+
+        <div class="topic-card" id="switch-statement">
+            <h2 class="topic-title">🔀 Switch Statement</h2>
+            <div class="description">
+                The switch statement is used to execute different blocks of code based on different values. It's often cleaner than multiple if-else statements when comparing the same variable against many values.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 Basic Switch Statement:</div>
+                <div class="code-block">
+<span class="comment">// Day of the week example</span>
+<span class="keyword">let</span> day = <span class="number">3</span>;
+<span class="keyword">let</span> dayName;
+
+<span class="keyword">switch</span> (day) {
+    <span class="keyword">case</span> <span class="number">1</span>:
+        dayName = <span class="string">"Monday"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">2</span>:
+        dayName = <span class="string">"Tuesday"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">3</span>:
+        dayName = <span class="string">"Wednesday"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">4</span>:
+        dayName = <span class="string">"Thursday"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="number">5</span>:
+        dayName = <span class="string">"Friday"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        dayName = <span class="string">"Weekend"</span>;
+}
+<span class="keyword">console</span>.log(dayName); <span class="comment">// Wednesday</span>
+                </div>
+            </div>
+
+            <div class="example-section">
+                <div class="example-title">💡 Advanced Switch Examples:</div>
+                <div class="code-block">
+<span class="comment">// Multiple cases with same result</span>
+<span class="keyword">let</span> grade = <span class="string">"B"</span>;
+
+<span class="keyword">switch</span> (grade) {
+    <span class="keyword">case</span> <span class="string">"A"</span>:
+    <span class="keyword">case</span> <span class="string">"A+"</span>:
+        <span class="keyword">console</span>.log(<span class="string">"Excellent!"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"B"</span>:
+    <span class="keyword">case</span> <span class="string">"B+"</span>:
+        <span class="keyword">console</span>.log(<span class="string">"Good job!"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"C"</span>:
+        <span class="keyword">console</span>.log(<span class="string">"Average"</span>);
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        <span class="keyword">console</span>.log(<span class="string">"Need improvement"</span>);
+}
+
+<span class="comment">// Calculator example</span>
+<span class="keyword">let</span> num1 = <span class="number">10</span>, num2 = <span class="number">5</span>, operator = <span class="string">"+"</span>;
+<span class="keyword">let</span> result;
+
+<span class="keyword">switch</span> (operator) {
+    <span class="keyword">case</span> <span class="string">"+"</span>:
+        result = num1 + num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"-"</span>:
+        result = num1 - num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"*"</span>:
+        result = num1 * num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"/"</span>:
+        result = num2 !== <span class="number">0</span> ? num1 / num2 : <span class="string">"Cannot divide by zero"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        result = <span class="string">"Invalid operator"</span>;
+}
+<span class="keyword">console</span>.log(<span class="string">`Result: ${result}`</span>);
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Important:</div>
+                Always use 'break' statements to prevent fall-through behavior. The default case is optional but recommended.
+            </div>
+        </div>
+
+        <div class="topic-card" id="alerts-prompts">
+            <h2 class="topic-title">💬 Alerts & Prompts</h2>
+            <div class="description">
+                Browser dialog methods allow interaction with users through pop-up windows. These are mainly used for simple user interactions and debugging.
+            </div>
+            
+            <div class="example-section">
+                <div class="example-title">💡 All Dialog Methods:</div>
+                <div class="code-block">
+<span class="comment">// Alert - displays a message</span>
+<span class="keyword">alert</span>(<span class="string">"Welcome to our website!"</span>);
+<span class="keyword">alert</span>(<span class="string">"Your form has been submitted successfully."</span>);
+
+<span class="comment">// Prompt - gets input from user</span>
+<span class="keyword">let</span> userName = <span class="keyword">prompt</span>(<span class="string">"What's your name?"</span>);
+<span class="keyword">let</span> userAge = <span class="keyword">prompt</span>(<span class="string">"Enter your age:"</span>, <span class="string">"18"</span>); <span class="comment">// with default</span>
+
+<span class="keyword">console</span>.log(<span class="string">"Hello, "</span> + userName);
+
+<span class="comment">// Confirm - returns true/false</span>
+<span class="keyword">let</span> isConfirmed = <span class="keyword">confirm</span>(<span class="string">"Are you sure you want to delete this item?"</span>);
+
+<span class="keyword">if</span> (isConfirmed) {
+    <span class="keyword">console</span>.log(<span class="string">"Item deleted"</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">console</span>.log(<span class="string">"Deletion cancelled"</span>);
+}
+                </div>
+            </div>
+
+            <div class="example-section">
+                <div class="example-title">💡 Practical Examples:</div>
+                <div class="code-block">
+<span class="comment">// Age verification with prompt</span>
+<span class="keyword">let</span> age = <span class="keyword">parseInt</span>(<span class="keyword">prompt</span>(<span class="string">"Enter your age:"</span>));
+
+<span class="keyword">if</span> (<span class="keyword">isNaN</span>(age) || age < <span class="number">0</span>) {
+    <span class="keyword">alert</span>(<span class="string">"Please enter a valid age!"</span>);
+} <span class="keyword">else if</span> (age < <span class="number">18</span>) {
+    <span class="keyword">alert</span>(<span class="string">"You are a minor."</span>);
+} <span class="keyword">else</span> {
+    <span class="keyword">alert</span>(<span class="string">"Welcome! You are an adult."</span>);
+}
+
+<span class="comment">// Simple calculator with prompts</span>
+<span class="keyword">let</span> num1 = <span class="keyword">parseFloat</span>(<span class="keyword">prompt</span>(<span class="string">"Enter first number:"</span>));
+<span class="keyword">let</span> operator = <span class="keyword">prompt</span>(<span class="string">"Enter operator (+, -, *, /):"</span>);
+<span class="keyword">let</span> num2 = <span class="keyword">parseFloat</span>(<span class="keyword">prompt</span>(<span class="string">"Enter second number:"</span>));
+
+<span class="keyword">let</span> result;
+<span class="keyword">switch</span> (operator) {
+    <span class="keyword">case</span> <span class="string">"+"</span>:
+        result = num1 + num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"-"</span>:
+        result = num1 - num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"*"</span>:
+        result = num1 * num2;
+        <span class="keyword">break</span>;
+    <span class="keyword">case</span> <span class="string">"/"</span>:
+        result = num2 !== <span class="number">0</span> ? num1 / num2 : <span class="string">"Error: Division by zero"</span>;
+        <span class="keyword">break</span>;
+    <span class="keyword">default</span>:
+        result = <span class="string">"Invalid operator"</span>;
+}
+
+<span class="keyword">alert</span>(<span class="string">`Result: ${result}`</span>);
+                </div>
+            </div>
+
+            <div class="note-box">
+                <div class="note-title">📌 Modern Alternative:</div>
+                For better user experience, consider using custom modals or HTML forms instead of browser dialogs in production applications.
+            </div>
+        </div>
+
+        <div class="interview-section">
+            <h2 class="interview-title">🎯 Interview Questions & Answers</h2>
+            
+            <div class="question-card">
+                <div class="question">Q1: What's the difference between == and === operators?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> == (loose equality) performs type coercion and compares values after converting them to the same type, while === (strict equality) compares both value and type without any conversion. Example: '5' == 5 is true, but '5' === 5 is false.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q2: What are the falsy values in JavaScript?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> There are exactly 6 falsy values in JavaScript: false, 0, -0, "" (empty string), null, undefined, and NaN. Everything else is truthy.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q3: Explain the difference between if-else and switch statements.</div>
+                <div class="answer">
+                    <strong>Answer:</strong> if-else is better for complex conditions and ranges, while switch is cleaner for comparing a single variable against multiple specific values. Switch uses strict equality (===) for comparison and requires break statements to prevent fall-through.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q4: What is short-circuit evaluation in logical operators?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> Short-circuit evaluation means that in logical operations, if the result can be determined from the first operand, the second operand is not evaluated. For &&, if the first is false, the result is false. For ||, if the first is true, the result is true.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q5: How do template literals differ from regular strings?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> Template literals use backticks (`) and support string interpolation with ${expression}, multi-line strings without escape characters, and embedded expressions. Regular strings use quotes and require concatenation (+) for dynamic content.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q6: What happens if you omit the break statement in a switch case?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> Without break, execution continues to the next case (fall-through), executing all subsequent cases until a break is encountered or the switch ends. This is usually unintended behavior.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q7: How does JavaScript handle string comparison?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> JavaScript compares strings lexicographically (dictionary order) character by character using Unicode values. Uppercase letters come before lowercase letters. For example: "Apple" < "apple" is true, and "10" < "2" is true (string comparison, not numeric).
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q8: What's the difference between alert(), prompt(), and confirm()?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> alert() displays a message and returns undefined. prompt() displays a message with an input field and returns the user's input as a string (or null if cancelled). confirm() displays a message with OK/Cancel buttons and returns true/false.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q9: When should you use nested if-else vs logical operators?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> Use logical operators (&&, ||) for simple conditions that can be evaluated in one expression. Use nested if-else when you need different actions for different condition combinations or when the logic is too complex for operators.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q10: How do you check if a variable is undefined or null?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> You can use: if (variable == null) to check for both null and undefined, or if (variable === null || variable === undefined) for explicit checking, or if (typeof variable === 'undefined') specifically for undefined.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q11: What's the output of: console.log(0 || 5 || 10)?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> The output is 5. The || operator returns the first truthy value it encounters. Since 0 is falsy, it moves to 5, which is truthy, so 5 is returned without evaluating 10.
+                </div>
+            </div>
+
+            <div class="question-card">
+                <div class="question">Q12: How do you link an external JavaScript file to HTML?</div>
+                <div class="answer">
+                    <strong>Answer:</strong> Use the script tag with src attribute: &lt;script src="filename.js"&gt;&lt;/script&gt;. Best practice is to place it before the closing &lt;/body&gt; tag for better performance, or use defer/async attributes in the head.
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(255, 255, 255, 0.1); border-radius: 15px; color: white;">
+            <h3>🎉 Congratulations!</h3>
+            <p>You've completed the JavaScript Fundamentals revision guide. Practice these concepts regularly and you'll master JavaScript basics!</p>
+            <p style="margin-top: 20px; font-style: italic;">💡 Remember: The key to mastering programming is consistent practice and building projects!</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.querySelectorAll('.toc-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const text = this.textContent.toLowerCase();
+                const targetId = text.replace(/[^a-z0-9]/g, '');
+                // Scroll to relevant section (simplified)
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add smooth hover effects
+        document.querySelectorAll('.topic-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        console.log("🚀 JavaScript Fundamentals Guide Loaded Successfully!");
+        console.log("💡 Tip: Open Developer Tools (F12) to see this message and practice console.log()!");
+    </script>
+</body>
+</html>

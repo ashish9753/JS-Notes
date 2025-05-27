@@ -125,6 +125,48 @@
             font-size: 1.2em;
             margin-right: 8px;
         }
+
+        /* Table of Contents Styles */
+        .toc {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .toc h2 {
+            color: #333;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .toc-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 10px;
+            list-style: none;
+        }
+
+        .toc-item {
+            padding: 10px 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+        }
+
+        .toc-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
         
         @media print {
             body { background: white; padding: 0; }
@@ -140,14 +182,44 @@
             <p style="color: black; margin-top: 20px;">Created by Ashish Sharma</p>
         </div>
 
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📚 Table of Contents</h2>
+            <ul class="toc-list">
+                <li class="toc-item"><a href="#strings-section">📝 String Methods & Concepts</a></li>
+                <li class="toc-item"><a href="#string-methods-overview">🔤 String Methods Overview</a></li>
+                <li class="toc-item"><a href="#trim-method">✂️ Trim Method</a></li>
+                <li class="toc-item"><a href="#strings-immutable">🔒 Strings are Immutable</a></li>
+                <li class="toc-item"><a href="#case-methods">🔄 ToUpperCase & ToLowerCase</a></li>
+                <li class="toc-item"><a href="#indexof-method">🔍 indexOf Method</a></li>
+                <li class="toc-item"><a href="#method-chaining">🔗 Method Chaining</a></li>
+                <li class="toc-item"><a href="#slice-method">🔪 Slice Method</a></li>
+                <li class="toc-item"><a href="#replace-repeat">🔄 Replace & Repeat</a></li>
+                <li class="toc-item"><a href="#arrays-section">📊 Arrays & Data Structures</a></li>
+                <li class="toc-item"><a href="#array-basics">📋 Array Basics</a></li>
+                <li class="toc-item"><a href="#array-visualization">👁️ Visualizing Arrays</a></li>
+                <li class="toc-item"><a href="#creating-arrays">🏗️ Creating Arrays</a></li>
+                <li class="toc-item"><a href="#array-mutability">🔄 Arrays are Mutable</a></li>
+                <li class="toc-item"><a href="#essential-methods">🛠️ Essential Array Methods</a></li>
+                <li class="toc-item"><a href="#search-methods">🔍 indexOf & includes</a></li>
+                <li class="toc-item"><a href="#concat-reverse">🔗 Concatenation & Reverse</a></li>
+                <li class="toc-item"><a href="#array-slice">🔪 Array Slice</a></li>
+                <li class="toc-item"><a href="#array-splice">🔧 Array Splice</a></li>
+                <li class="toc-item"><a href="#array-sort">📊 Array Sort</a></li>
+                <li class="toc-item"><a href="#array-references">📎 Array References</a></li>
+                <li class="toc-item"><a href="#constant-arrays">🔒 Constant Arrays</a></li>
+                <li class="toc-item"><a href="#nested-arrays">🏗️ Nested Arrays</a></li>
+            </ul>
+        </div>
+
         <!-- STRINGS SECTION -->
-        <div class="section">
+        <div class="section" id="strings-section">
             <div class="section-header strings-section">
                 <span class="emoji">📝</span> String Methods & Concepts
             </div>
             <div class="content">
                 
-                <div class="topic">
+                <div class="topic" id="string-methods-overview">
                     <div class="topic-title"><span class="emoji">🔤</span> String Methods Overview</div>
                     <p>Strings in JavaScript come with many built-in methods to manipulate and work with text data.</p>
                     <div class="code">
@@ -157,7 +229,7 @@ console.log(text.charAt(0));     // "H"
 console.log(text.indexOf("o"));  // 4</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="trim-method">
                     <div class="topic-title"><span class="emoji">✂️</span> Trim Method</div>
                     <p>The <span class="highlight">trim()</span> method removes whitespace from both ends of a string.</p>
                     <div class="code">
@@ -170,7 +242,7 @@ console.log(messy.trimEnd());        // "   Hello World"</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="strings-immutable">
                     <div class="topic-title"><span class="emoji">🔒</span> Strings are Immutable in JS</div>
                     <p>Once created, strings cannot be changed. All string methods return new strings.</p>
                     <div class="code">
@@ -183,7 +255,7 @@ console.log(modified);  // "HELLO" (new string)</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="case-methods">
                     <div class="topic-title"><span class="emoji">🔄</span> ToUpperCase and ToLowerCase</div>
                     <p>Convert strings between different cases for formatting and comparison.</p>
                     <div class="code">
@@ -198,7 +270,7 @@ if(input.toLowerCase() === "hello") {
 }</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="indexof-method">
                     <div class="topic-title"><span class="emoji">🔍</span> Methods with Arguments - indexOf</div>
                     <p>Find the position of a substring within a string.</p>
                     <div class="code">
@@ -212,7 +284,7 @@ console.log(sentence.lastIndexOf("the"));    // 31 (last occurrence)</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="method-chaining">
                     <div class="topic-title"><span class="emoji">🔗</span> Method Chaining</div>
                     <p>Combine multiple string methods in a single line for powerful text processing.</p>
                     <div class="code">
@@ -226,7 +298,7 @@ console.log(processed);  // "hello javascript"
 // "hello world" → replace() → "hello javascript"</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="slice-method">
                     <div class="topic-title"><span class="emoji">🔪</span> Slice Method</div>
                     <p>Extract a portion of a string without modifying the original.</p>
                     <div class="code">
@@ -240,7 +312,7 @@ console.log(text.slice(-11, -7));    // "Pro" (negative indices)</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="replace-repeat">
                     <div class="topic-title"><span class="emoji">🔄</span> Replace & Repeat Method</div>
                     <p>Replace text and repeat strings for various use cases.</p>
                     <div class="code">
@@ -271,13 +343,13 @@ console.log("Ha".repeat(3));        // "HaHaHa"</div>
         </div>
 
         <!-- ARRAYS SECTION -->
-        <div class="section">
+        <div class="section" id="arrays-section">
             <div class="section-header arrays-section">
                 <span class="emoji">📊</span> Arrays & Data Structures
             </div>
             <div class="content">
                 
-                <div class="topic">
+                <div class="topic" id="array-basics">
                     <div class="topic-title"><span class="emoji">📋</span> Array (Data Structure)</div>
                     <p>Arrays are ordered collections that can store multiple values of any type.</p>
                     <div class="code">
@@ -290,7 +362,7 @@ console.log(fruits.length);    // 3
 console.log(fruits[0]);        // "apple"</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-visualization">
                     <div class="topic-title"><span class="emoji">👁️</span> Visualizing Arrays</div>
                     <p>Understanding array structure and indexing is crucial for manipulation.</p>
                     <div class="code">
@@ -307,7 +379,7 @@ console.log(colors[-1]);    // undefined (no negative indexing)</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="creating-arrays">
                     <div class="topic-title"><span class="emoji">🏗️</span> Creating Arrays</div>
                     <p>Multiple ways to create and initialize arrays in JavaScript.</p>
                     <div class="code">
@@ -325,7 +397,7 @@ let fromString = Array.from("hello");  // ["h", "e", "l", "l", "o"]
 let range = Array.from({length: 5}, (_, i) => i + 1);  // [1, 2, 3, 4, 5]</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-mutability">
                     <div class="topic-title"><span class="emoji">🔄</span> Arrays are Mutable</div>
                     <p>Unlike strings, arrays can be modified after creation.</p>
                     <div class="code">
@@ -340,7 +412,7 @@ console.log(fruits);  // ["mango", "grape", "banana", "orange"]</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="essential-methods">
                     <div class="topic-title"><span class="emoji">🛠️</span> Array Methods</div>
                     <p>Essential methods for array manipulation and transformation.</p>
                     <div class="code">
@@ -370,7 +442,7 @@ let sum = numbers.reduce((acc, n) => acc + n, 0);  // 15</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="search-methods">
                     <div class="topic-title"><span class="emoji">🔍</span> indexOf & includes Method</div>
                     <p>Search for elements within arrays efficiently.</p>
                     <div class="code">
@@ -389,7 +461,7 @@ let users = [{name: "John"}, {name: "Jane"}];
 let user = users.find(u => u.name === "Jane");  // {name: "Jane"}</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="concat-reverse">
                     <div class="topic-title"><span class="emoji">🔗</span> Concatenation & Reverse</div>
                     <p>Combine arrays and reverse their order.</p>
                     <div class="code">
@@ -409,7 +481,7 @@ console.log(original);                   // [3, 2, 1] - original changed!
 let safe = [...original].reverse();      // Keep original intact</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-slice">
                     <div class="topic-title"><span class="emoji">🔪</span> Slice in Arrays</div>
                     <p>Extract portions of arrays without modifying the original.</p>
                     <div class="code">
@@ -424,7 +496,7 @@ console.log(numbers.slice(-5, -2));    // [1, 2, 3]
 console.log(numbers);                  // [0, 1, 2, 3, 4, 5]</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-splice">
                     <div class="topic-title"><span class="emoji">🔧</span> Splice in Arrays</div>
                     <p>Add, remove, or replace elements at any position (mutates original array).</p>
                     <div class="code">
@@ -444,7 +516,7 @@ fruits.splice(2, 1, "mango");          // Replace 1 element at index 2
 console.log(fruits);                   // ["apple", "grape", "mango", "orange"]</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-sort">
                     <div class="topic-title"><span class="emoji">📊</span> Sort in Arrays</div>
                     <p>Arrange array elements in ascending or descending order.</p>
                     <div class="code">
@@ -477,7 +549,7 @@ users.sort((a, b) => a.age - b.age);   // Sort by age ascending</div>
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="array-references">
                     <div class="topic-title"><span class="emoji">📎</span> Array References</div>
                     <p>Understanding how arrays are stored and referenced in memory.</p>
                     <div class="code">
@@ -496,7 +568,7 @@ let deep = JSON.parse(JSON.stringify(original));  // Deep copy (for simple cases
                     </div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="constant-arrays">
                     <div class="topic-title"><span class="emoji">🔒</span> Constant Arrays</div>
                     <p>const with arrays prevents reassignment but allows mutation.</p>
                     <div class="code">
@@ -514,7 +586,7 @@ const immutable = Object.freeze(["a", "b", "c"]);
 immutable.push("d");                   // ❌ Error in strict mode</div>
                 </div>
 
-                <div class="topic">
+                <div class="topic" id="nested-arrays">
                     <div class="topic-title"><span class="emoji">🏗️</span> Nested Arrays</div>
                     <p>Arrays can contain other arrays, creating multi-dimensional structures.</p>
                     <div class="code">
