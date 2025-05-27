@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Fundamentals - Study Guide 📚</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .topic {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff6b6b;
+            transition: transform 0.3s ease;
+        }
+
+        .topic:hover {
+            transform: translateY(-5px);
+        }
+
+        .topic h2 {
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topic h3 {
+            color: #4ecdc4;
+            font-size: 1.3em;
+            margin: 20px 0 10px 0;
+        }
+
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-left: 4px solid #4ecdc4;
+        }
+
+        .note {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #fdcb6e;
+        }
+
+        .note strong {
+            color: #2d3436;
+        }
+
+        .example {
+            background: linear-gradient(135deg, #a8e6cf, #88d8c0);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            border-left: 4px solid #00b894;
+        }
+
+        .interview-section {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .interview-section h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .question {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .question h4 {
+            color: #fdcb6e;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .toc h3 {
+            color: #2d3436;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .toc ul {
+            columns: 2;
+            column-gap: 30px;
+            list-style: none;
+        }
+
+        .toc li {
+            padding: 8px 0;
+            border-bottom: 1px dotted #ddd;
+        }
+
+        .toc a {
+            color: #0984e3;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .toc a:hover {
+            color: #ff6b6b;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .topic {
+                padding: 20px;
+            }
+            
+            .toc ul {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>JavaScript Fundamentals 🚀</h1>
+            <p>Complete Study Guide for Placement Preparation 💪</p>
+        </div>
+
+        <div class="content">
+            <div class="toc">
+                <h3>📋 Table of Contents</h3>
+                <ul>
+                    <li><a href="#console">🖥️ Using the Console</a></li>
+                    <li><a href="#variables">📦 What is a Variable?</a></li>
+                    <li><a href="#datatypes">🏷️ Data Types in JS</a></li>
+                    <li><a href="#numbers">🔢 Numbers in JS</a></li>
+                    <li><a href="#operations">➕ Operations in JS</a></li>
+                    <li><a href="#nan">❌ NaN in JS</a></li>
+                    <li><a href="#precedence">📊 Operator Precedence</a></li>
+                    <li><a href="#keywords">🔑 let, const & var Keywords</a></li>
+                    <li><a href="#assignment">= Assignment Operators</a></li>
+                    <li><a href="#unary">1️⃣ Unary Operators</a></li>
+                    <li><a href="#identifier">🏷️ Identifier Rules</a></li>
+                    <li><a href="#boolean">✅ Boolean in JS</a></li>
+                    <li><a href="#typescript">🔷 What is TypeScript?</a></li>
+                    <li><a href="#string">📝 String in JS</a></li>
+                    <li><a href="#indices">🔤 String Indices</a></li>
+                    <li><a href="#null">🚫 null & undefined in JS</a></li>
+                </ul>
+            </div>
+
+            <div class="topic" id="console">
+                <h2>🖥️ Using the Console</h2>
+                <p>The console is a developer tool that allows you to interact with JavaScript code and debug applications.</p>
+                
+                <div class="note">
+                    <strong>📝 Note:</strong> The console is your best friend for debugging! Use it to test code snippets and check variable values.
+                </div>
+
+                <h3>Common Console Methods:</h3>
+                <div class="code-block">
+// Basic output
+console.log("Hello World!");
+
+// Different types of messages
+console.info("This is information");
+console.warn("This is a warning");
+console.error("This is an error");
+
+// Grouping console messages
+console.group("User Details");
+console.log("Name: John");
+console.log("Age: 25");
+console.groupEnd();
+
+// Timing operations
+console.time("Operation Time");
+// ... some code
+console.timeEnd("Operation Time");
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> Try opening your browser's developer tools (F12) and run these console commands!
+                </div>
+            </div>
+
+            <div class="topic" id="variables">
+                <h2>📦 What is a Variable?</h2>
+                <p>A variable is a container that stores data values. Think of it as a labeled box where you can put different items.</p>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Variables are the foundation of programming - they allow us to store and manipulate data!
+                </div>
+
+                <div class="code-block">
+// Variable declaration and assignment
+let name = "Alice";
+let age = 25;
+let isStudent = true;
+
+console.log(name); // Output: Alice
+console.log(age);  // Output: 25
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> Variables are like containers - you can change what's inside them!
+                </div>
+            </div>
+
+            <div class="topic" id="datatypes">
+                <h2>🏷️ Data Types in JavaScript</h2>
+                <p>JavaScript has several built-in data types that determine what kind of data can be stored in variables.</p>
+
+                <h3>Primitive Data Types:</h3>
+                <div class="code-block">
+// Number
+let score = 95;
+let price = 19.99;
+
+// String
+let message = "Hello World";
+let char = 'A';
+
+// Boolean
+let isActive = true;
+let isComplete = false;
+
+// Undefined
+let undefinedVar;
+console.log(undefinedVar); // undefined
+
+// Null
+let emptyValue = null;
+
+// Symbol (ES6)
+let sym = Symbol('id');
+
+// BigInt (ES2020)
+let bigNumber = 123456789012345678901234567890n;
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> JavaScript is dynamically typed - you don't need to specify the data type when declaring variables!
+                </div>
+
+                <h3>Non-Primitive Data Types:</h3>
+                <div class="code-block">
+// Object
+let person = {
+    name: "John",
+    age: 30,
+    city: "New York"
+};
+
+// Array
+let colors = ["red", "green", "blue"];
+
+// Function
+let greet = function(name) {
+    return "Hello " + name;
+};
+                </div>
+            </div>
+
+            <div class="topic" id="numbers">
+                <h2>🔢 Numbers in JavaScript</h2>
+                <p>JavaScript has only one number type - it can represent both integers and floating-point numbers.</p>
+
+                <div class="code-block">
+// Integer numbers
+let age = 25;
+let temperature = -10;
+
+// Floating-point numbers
+let pi = 3.14159;
+let price = 99.99;
+
+// Scientific notation
+let bigNumber = 1.5e6; // 1,500,000
+let smallNumber = 2.5e-3; // 0.0025
+
+// Special number values
+let infinity = Infinity;
+let negativeInfinity = -Infinity;
+let notANumber = NaN;
+
+// Number methods
+console.log(Number.isInteger(25)); // true
+console.log(Number.isFinite(Infinity)); // false
+console.log(Number.parseFloat("3.14")); // 3.14
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> JavaScript numbers are stored as 64-bit floating-point values, which can sometimes lead to precision issues!
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> 0.1 + 0.2 === 0.3 returns false due to floating-point precision!
+                </div>
+            </div>
+
+            <div class="topic" id="operations">
+                <h2>➕ Operations in JavaScript</h2>
+                <p>JavaScript supports various mathematical and logical operations.</p>
+
+                <h3>Arithmetic Operators:</h3>
+                <div class="code-block">
+let a = 10, b = 3;
+
+// Basic arithmetic
+console.log(a + b); // Addition: 13
+console.log(a - b); // Subtraction: 7
+console.log(a * b); // Multiplication: 30
+console.log(a / b); // Division: 3.333...
+console.log(a % b); // Modulus: 1
+console.log(a ** b); // Exponentiation: 1000
+
+// String concatenation
+let firstName = "John";
+let lastName = "Doe";
+console.log(firstName + " " + lastName); // "John Doe"
+                </div>
+
+                <h3>Comparison Operators:</h3>
+                <div class="code-block">
+let x = 5, y = "5";
+
+console.log(x == y);  // true (loose equality)
+console.log(x === y); // false (strict equality)
+console.log(x != y);  // false
+console.log(x !== y); // true
+console.log(x > 3);   // true
+console.log(x <= 5);  // true
+                </div>
+
+                <h3>Logical Operators:</h3>
+                <div class="code-block">
+let isAdult = true;
+let hasLicense = false;
+
+console.log(isAdult && hasLicense); // AND: false
+console.log(isAdult || hasLicense); // OR: true
+console.log(!isAdult); // NOT: false
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Always use === for comparison to avoid type coercion surprises!
+                </div>
+            </div>
+
+            <div class="topic" id="nan">
+                <h2>❌ NaN in JavaScript</h2>
+                <p>NaN stands for "Not a Number" and represents an invalid number value.</p>
+
+                <div class="code-block">
+// Operations that result in NaN
+console.log(0 / 0);        // NaN
+console.log("hello" * 2);  // NaN
+console.log(Math.sqrt(-1)); // NaN
+
+// Checking for NaN
+let result = "abc" / 2;
+console.log(isNaN(result));        // true
+console.log(Number.isNaN(result)); // true
+
+// NaN is not equal to itself!
+console.log(NaN === NaN); // false
+console.log(NaN == NaN);  // false
+
+// Safe way to check for NaN
+function isReallyNaN(value) {
+    return value !== value;
+}
+console.log(isReallyNaN(NaN)); // true
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> NaN is the only value in JavaScript that is not equal to itself! Use Number.isNaN() for reliable NaN checking.
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> parseInt("Hello123") returns NaN because it can't convert the string to a number.
+                </div>
+            </div>
+
+            <div class="topic" id="precedence">
+                <h2>📊 Operator Precedence</h2>
+                <p>Operator precedence determines the order in which operations are performed in expressions.</p>
+
+                <div class="code-block">
+// Precedence examples
+console.log(2 + 3 * 4);    // 14 (not 20)
+console.log((2 + 3) * 4);  // 20
+
+// Common precedence order (highest to lowest)
+// 1. Parentheses ()
+// 2. Exponentiation **
+// 3. Multiplication *, Division /, Modulus %
+// 4. Addition +, Subtraction -
+// 5. Comparison operators <, >, <=, >=
+// 6. Equality ==, ===, !=, !==
+// 7. Logical AND &&
+// 8. Logical OR ||
+// 9. Assignment =, +=, -=, etc.
+
+let result = 10 + 5 * 2 ** 3 / 4 - 1;
+console.log(result); // 19 (10 + 5 * 8 / 4 - 1 = 10 + 10 - 1)
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> When in doubt, use parentheses to make your intentions clear!
+                </div>
+            </div>
+
+            <div class="topic" id="keywords">
+                <h2>🔑 let, const & var Keywords</h2>
+                <p>These keywords are used to declare variables, each with different behaviors and scope rules.</p>
+
+                <h3>var (Old way - avoid in modern JS):</h3>
+                <div class="code-block">
+var name = "John";
+var name = "Jane"; // Redeclaration allowed
+name = "Bob";      // Reassignment allowed
+
+// Function-scoped
+function example() {
+    var x = 1;
+    if (true) {
+        var x = 2; // Same variable
+        console.log(x); // 2
+    }
+    console.log(x); // 2
+}
+                </div>
+
+                <h3>let (Block-scoped, reassignable):</h3>
+                <div class="code-block">
+let age = 25;
+// let age = 30; // Error: Cannot redeclare
+age = 30; // Reassignment allowed
+
+// Block-scoped
+function example() {
+    let y = 1;
+    if (true) {
+        let y = 2; // Different variable
+        console.log(y); // 2
+    }
+    console.log(y); // 1
+}
+                </div>
+
+                <h3>const (Block-scoped, not reassignable):</h3>
+                <div class="code-block">
+const PI = 3.14159;
+// PI = 3.14; // Error: Cannot reassign
+
+// Objects and arrays can be mutated
+const person = { name: "John" };
+person.name = "Jane"; // Allowed
+person.age = 25;      // Allowed
+
+const colors = ["red", "green"];
+colors.push("blue");  // Allowed
+colors[0] = "yellow"; // Allowed
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Use const by default, let when you need to reassign, and avoid var in modern JavaScript!
+                </div>
+            </div>
+
+            <div class="topic" id="assignment">
+                <h2>= Assignment Operators</h2>
+                <p>Assignment operators are used to assign values to variables.</p>
+
+                <div class="code-block">
+let x = 10;
+
+// Basic assignment
+x = 20;
+
+// Compound assignment operators
+x += 5;  // x = x + 5  (25)
+x -= 3;  // x = x - 3  (22)
+x *= 2;  // x = x * 2  (44)
+x /= 4;  // x = x / 4  (11)
+x %= 3;  // x = x % 3  (2)
+x **= 3; // x = x ** 3 (8)
+
+// Logical assignment (ES2021)
+let a = null;
+a ||= "default"; // a = a || "default"
+console.log(a); // "default"
+
+let b = "hello";
+b &&= "world"; // b = b && "world"
+console.log(b); // "world"
+
+let c = null;
+c ??= "fallback"; // c = c ?? "fallback"
+console.log(c); // "fallback"
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> Compound assignment operators are shorthand for common operations!
+                </div>
+            </div>
+
+            <div class="topic" id="unary">
+                <h2>1️⃣ Unary Operators</h2>
+                <p>Unary operators work with a single operand.</p>
+
+                <div class="code-block">
+let x = 5;
+let y = "10";
+
+// Increment and Decrement
+console.log(++x); // Pre-increment: 6
+console.log(x++); // Post-increment: 6 (then x becomes 7)
+console.log(--x); // Pre-decrement: 6
+console.log(x--); // Post-decrement: 6 (then x becomes 5)
+
+// Unary plus and minus
+console.log(+y);  // 10 (converts string to number)
+console.log(-x);  // -5
+
+// typeof operator
+console.log(typeof x);     // "number"
+console.log(typeof "hi");  // "string"
+console.log(typeof true);  // "boolean"
+console.log(typeof {});    // "object"
+
+// Logical NOT
+console.log(!true);  // false
+console.log(!!x);    // true (double negation converts to boolean)
+
+// delete operator
+let obj = { name: "John", age: 30 };
+delete obj.age;
+console.log(obj); // { name: "John" }
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Be careful with pre/post increment operators - they can cause confusion in complex expressions!
+                </div>
+            </div>
+
+            <div class="topic" id="identifier">
+                <h2>🏷️ Identifier Rules</h2>
+                <p>Identifiers are names used for variables, functions, and objects. They must follow specific rules.</p>
+
+                <div class="code-block">
+// Valid identifiers
+let name;
+let firstName;
+let _private;
+let $jquery;
+let userName123;
+let camelCase;
+let CONSTANT_VALUE;
+
+// Invalid identifiers
+// let 123name;     // Cannot start with number
+// let first-name;  // Cannot contain hyphens
+// let first name;  // Cannot contain spaces
+// let class;       // Cannot use reserved words
+// let function;    // Cannot use reserved words
+
+// Reserved words (cannot be used as identifiers)
+const reservedWords = [
+    'break', 'case', 'catch', 'class', 'const', 'continue',
+    'debugger', 'default', 'delete', 'do', 'else', 'export',
+    'extends', 'finally', 'for', 'function', 'if', 'import',
+    'in', 'instanceof', 'let', 'new', 'return', 'super',
+    'switch', 'this', 'throw', 'try', 'typeof', 'var',
+    'void', 'while', 'with', 'yield'
+];
+                </div>
+
+                <div class="note">
+                    <strong>📝 Rules:</strong>
+                    <br>• Must start with letter, underscore (_), or dollar sign ($)
+                    <br>• Can contain letters, numbers, underscores, and dollar signs
+                    <br>• Case-sensitive (myVar and MyVar are different)
+                    <br>• Cannot be reserved keywords
+                    <br>• Use camelCase convention for variables and functions
+                </div>
+            </div>
+
+            <div class="topic" id="boolean">
+                <h2>✅ Boolean in JavaScript</h2>
+                <p>Boolean represents logical values: true or false.</p>
+
+                <div class="code-block">
+// Boolean literals
+let isTrue = true;
+let isFalse = false;
+
+// Boolean conversion
+console.log(Boolean(1));        // true
+console.log(Boolean(0));        // false
+console.log(Boolean("hello"));  // true
+console.log(Boolean(""));       // false
+console.log(Boolean(null));     // false
+console.log(Boolean(undefined)); // false
+
+// Truthy values
+if ("hello") console.log("Truthy!"); // Executes
+if (42) console.log("Truthy!");      // Executes
+if ([]) console.log("Truthy!");      // Executes (empty array is truthy)
+if ({}) console.log("Truthy!");      // Executes (empty object is truthy)
+
+// Falsy values
+const falsyValues = [false, 0, -0, 0n, "", null, undefined, NaN];
+
+// Boolean operations
+let a = true, b = false;
+console.log(a && b); // false
+console.log(a || b); // true
+console.log(!a);     // false
+
+// Short-circuit evaluation
+let name = null;
+let displayName = name || "Guest"; // "Guest"
+console.log(displayName);
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Remember the 8 falsy values: false, 0, -0, 0n, "", null, undefined, NaN. Everything else is truthy!
+                </div>
+            </div>
+
+            <div class="topic" id="typescript">
+                <h2>🔷 What is TypeScript?</h2>
+                <p>TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript.</p>
+
+                <div class="code-block">
+// JavaScript (dynamic typing)
+let message = "Hello";
+message = 42; // Valid in JS
+
+// TypeScript (static typing)
+let message: string = "Hello";
+// message = 42; // Error in TS
+
+// Type annotations
+let age: number = 25;
+let isStudent: boolean = true;
+let hobbies: string[] = ["reading", "coding"];
+
+// Interface
+interface Person {
+    name: string;
+    age: number;
+    email?: string; // Optional property
+}
+
+let user: Person = {
+    name: "John",
+    age: 30
+};
+
+// Function with types
+function greet(name: string): string {
+    return `Hello, ${name}!`;
+}
+
+// Generic types
+function identity<T>(arg: T): T {
+    return arg;
+}
+                </div>
+
+                <div class="note">
+                    <strong>📝 Benefits of TypeScript:</strong>
+                    <br>• Static type checking catches errors at compile time
+                    <br>• Better IDE support with autocomplete and refactoring
+                    <br>• Enhanced code documentation and readability
+                    <br>• Easier maintenance of large codebases
+                    <br>• Compiles to clean, readable JavaScript
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> TypeScript helps prevent common bugs like accessing properties on null/undefined values!
+                </div>
+            </div>
+
+            <div class="topic" id="string">
+                <h2>📝 String in JavaScript</h2>
+                <p>Strings represent text data and are immutable in JavaScript.</p>
+
+                <div class="code-block">
+// String creation
+let singleQuotes = 'Hello World';
+let doubleQuotes = "Hello World";
+let templateLiteral = `Hello World`;
+
+// String with variables (template literals)
+let name = "Alice";
+let greeting = `Hello, ${name}! Today is ${new Date().toDateString()}`;
+
+// Multiline strings
+let multiline = `
+    This is a
+    multiline
+    string
+`;
+
+// String methods
+let text = "JavaScript Programming";
+
+console.log(text.length);           // 21
+console.log(text.toUpperCase());    // "JAVASCRIPT PROGRAMMING"
+console.log(text.toLowerCase());    // "javascript programming"
+console.log(text.charAt(0));        // "J"
+console.log(text.substring(0, 10)); // "JavaScript"
+console.log(text.indexOf("Script")); // 4
+console.log(text.includes("Program")); // true
+console.log(text.split(" "));       // ["JavaScript", "Programming"]
+
+// String immutability
+let original = "Hello";
+original.toUpperCase(); // Returns "HELLO" but doesn't change original
+console.log(original);  // Still "Hello"
+                </div>
+
+                <div class="note">
+                    <strong>📝 Note:</strong> Strings are immutable - methods that appear to modify strings actually return new strings!
+                </div>
+            </div>
+
+            <div class="topic" id="indices">
+                <h2>🔤 String Indices</h2>
+                <p>String characters can be accessed using indices, starting from 0.</p>
+
+                <div class="code-block">
+let word = "JavaScript";
+
+// Accessing characters by index
+console.log(word[0]);  // "J"
+console.log(word[1]);  // "a"
+console.log(word[4]);  // "S"
+console.log(word[9]);  // "t"
+
+// Last character
+console.log(word[word.length - 1]); // "t"
+
+// Negative indices (doesn't work directly)
+// console.log(word[-1]); // undefined
+
+// Using charAt method
+console.log(word.charAt(0));  // "J"
+console.log(word.charAt(50)); // "" (empty string, not undefined)
+
+// Looping through string
+for (let i = 0; i < word.length; i++) {
+    console.log(`Index ${i}: ${word[i]}`);
+}
+
+// Modern way with for...of
+for (let char of word) {
+    console.log(char);
+}
+
+// String is array-like but not an array
+console.log(Array.isArray(word));     // false
+console.log(Array.isArray([...word])); // true
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> String indices are like house numbers - they start from 0 and go up to length-1!
+                </div>
+            </div>
+
+            <div class="topic" id="null">
+                <h2>🚫 null & undefined in JavaScript</h2>
+                <p>Both represent "nothing" but in different contexts.</p>
+
+                <div class="code-block">
+// undefined - variable declared but not assigned
+let notAssigned;
+console.log(notAssigned); // undefined
+console.log(typeof notAssigned); // "undefined"
+
+// null - intentional absence of value
+let emptyValue = null;
+console.log(emptyValue); // null
+console.log(typeof emptyValue); // "object" (this is a known bug in JS)
+
+// Common scenarios for undefined
+let obj = { name: "John" };
+console.log(obj.age); // undefined (property doesn't exist)
+
+function greet(name) {
+    console.log(name); // undefined if no argument passed
+}
+greet(); // undefined
+
+// Common scenarios for null
+let data = null; // Explicitly set to "no value"
+let element = document.getElementById("nonexistent"); // null
+
+// Comparison
+console.log(null == undefined);  // true (loose equality)
+console.log(null === undefined); // false (strict equality)
+
+// Checking for null/undefined
+function checkValue(value) {
+    if (value == null) {
+        console.log("Value is null or undefined");
+    }
+    
+    // More specific checks
+    if (value === null) {
+        console.log("Value is null");
+    } else if (value === undefined) {
+        console.log("Value is undefined");
+    }
+}
+
+// Nullish coalescing operator (??) - ES2020
+let username = null;
+let displayName = username ?? "Guest"; // "Guest"
+
+let age = 0;
+let userAge = age ?? 18; // 0 (because 0 is not null/undefined)
+
+// Optional chaining (?.) - ES2020
+let user = {
+    profile: {
+        name: "John"
+    }
+};
+
+console.log(user?.profile?.name);    // "John"
+console.log(user?.address?.street);  // undefined (no error)
+                </div>
+
+                <div class="note">
+                    <strong>📝 Key Differences:</strong>
+                    <br>• <strong>undefined:</strong> Variable exists but has no value assigned
+                    <br>• <strong>null:</strong> Intentionally set to represent "no value"
+                    <br>• Use null when you want to explicitly indicate "empty"
+                    <br>• undefined is the default for uninitialized variables
+                </div>
+
+                <div class="example">
+                    <strong>🎯 Example:</strong> Think of undefined as "I forgot to put something here" and null as "I intentionally left this empty"!
+                </div>
+            </div>
+        </div>
+
+        <div class="interview-section">
+            <h2>🎯 Interview Questions</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Essential questions for placement preparation</p>
+
+            <div class="question">
+                <h4>Q1: What is the difference between let, const, and var?</h4>
+                <p><strong>Answer:</strong> var is function-scoped and can be redeclared; let is block-scoped and reassignable but not redeclarable; const is block-scoped and neither reassignable nor redeclarable. var has hoisting issues, while let and const have temporal dead zone.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q2: Explain the difference between == and === operators.</h4>
+                <p><strong>Answer:</strong> == performs type coercion and compares values after converting them to the same type. === performs strict comparison without type coercion. Example: "5" == 5 is true, but "5" === 5 is false.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q3: What are falsy values in JavaScript?</h4>
+                <p><strong>Answer:</strong> There are 8 falsy values: false, 0, -0, 0n (BigInt zero), "" (empty string), null, undefined, and NaN. Everything else is truthy.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q4: What is NaN and how do you check for it?</h4>
+                <p><strong>Answer:</strong> NaN means "Not a Number" and represents an invalid number. It's unique because NaN !== NaN. Use Number.isNaN() to check for NaN reliably, as isNaN() can give false positives.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q5: Explain the difference between null and undefined.</h4>
+                <p><strong>Answer:</strong> undefined means a variable is declared but not assigned a value. null is an assignment value representing intentional absence of value. typeof null returns "object" (a known bug), while typeof undefined returns "undefined".</p>
+            </div>
+
+            <div class="question">
+                <h4>Q6: What is hoisting in JavaScript?</h4>
+                <p><strong>Answer:</strong> Hoisting is JavaScript's behavior of moving variable and function declarations to the top of their scope during compilation. var variables are hoisted and initialized with undefined, while let/const are hoisted but not initialized (temporal dead zone).</p>
+            </div>
+
+            <div class="question">
+                <h4>Q7: What are template literals and their advantages?</h4>
+                <p><strong>Answer:</strong> Template literals use backticks (`) and allow embedded expressions with ${}, multiline strings, and tagged templates. They're more readable than string concatenation and support expression interpolation.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q8: Explain operator precedence with an example.</h4>
+                <p><strong>Answer:</strong> Operator precedence determines evaluation order. Multiplication has higher precedence than addition. Example: 2 + 3 * 4 = 14 (not 20) because 3 * 4 is evaluated first.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q9: What is the difference between pre-increment and post-increment?</h4>
+                <p><strong>Answer:</strong> Pre-increment (++x) increments the value and returns the new value. Post-increment (x++) returns the current value and then increments. Example: if x=5, ++x returns 6 and x becomes 6; x++ returns 5 and x becomes 6.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q10: How do you check the data type of a variable?</h4>
+                <p><strong>Answer:</strong> Use the typeof operator. Example: typeof "hello" returns "string". Note that typeof null returns "object" (historical bug), and typeof [] returns "object". Use Array.isArray() to check for arrays specifically.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q11: What are the rules for JavaScript identifiers?</h4>
+                <p><strong>Answer:</strong> Identifiers must start with a letter, underscore, or dollar sign. Subsequent characters can include numbers. They're case-sensitive, cannot be reserved words, and should follow camelCase convention.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q12: Explain string immutability in JavaScript.</h4>
+                <p><strong>Answer:</strong> Strings are immutable, meaning they cannot be changed after creation. String methods return new strings rather than modifying the original. Example: str.toUpperCase() returns a new string; it doesn't change str.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q13: What is TypeScript and why use it?</h4>
+                <p><strong>Answer:</strong> TypeScript is a statically typed superset of JavaScript that compiles to plain JavaScript. Benefits include early error detection, better IDE support, enhanced code documentation, and easier maintenance of large applications.</p>
+            </div>
+
+            <div class="question">
+                <h4>Q14: What is the nullish coalescing operator?</h4>
+                <p><strong>Answer:</strong> The ?? operator returns the right operand when the left is null or undefined, but not for other falsy values. Example: 0 ?? "default" returns 0, while null ?? "default" returns "default".</p>
+            </div>
+
+            <div class="question">
+                <h4>Q15: Explain the console object and its methods.</h4>
+                <p><strong>Answer:</strong> The console object provides access to debugging console. Methods include log() for general output, error() for errors, warn() for warnings, time()/timeEnd() for timing, and group()/groupEnd() for organizing output.</p>
+            </div>
+
+            <div style="background: rgba(255, 255, 255, 0.2); padding: 20px; border-radius: 10px; margin-top: 30px; text-align: center;">
+                <h3>💡 Pro Tips for Interviews:</h3>
+                <p>• Practice coding examples for each concept</p>
+                <p>• Understand the "why" behind each feature</p>
+                <p>• Be prepared to write code on a whiteboard</p>
+                <p>• Know the gotchas and edge cases</p>
+                <p>• Stay updated with ES6+ features</p>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, #00b894, #00a085); color: white; padding: 30px; text-align: center; margin-top: 40px;">
+            <h2>🚀 You're Ready to Rock Your Interviews!</h2>
+            <p style="font-size: 1.2em; margin-top: 15px;">Keep practicing, stay confident, and code with passion! 💪✨</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            const links = document.querySelectorAll('a[href^="#"]');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add click-to-copy functionality for code blocks
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => {
+                block.style.cursor = 'pointer';
+                block.title = 'Click to copy code';
+                block.addEventListener('click', function() {
+                    navigator.clipboard.writeText(this.textContent).then(() => {
+                        const originalBg = this.style.background;
+                        this.style.background = 'linear-gradient(135deg, #00b894, #00a085)';
+                        setTimeout(() => {
+                            this.style.background = originalBg;
+                        }, 300);
+                    });
+                });
+            });
+
+            // Add fade-in animation for topics
+            const topics = document.querySelectorAll('.topic');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            topics.forEach(topic => {
+                topic.style.opacity = '0';
+                topic.style.transform = 'translateY(20px)';
+                topic.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(topic);
+            });
+        });
+    </script>
+</body>
+</html>
